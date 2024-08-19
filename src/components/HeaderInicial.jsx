@@ -3,8 +3,19 @@ import { FaSistrix } from "react-icons/fa";
 import { FaRegBell } from "react-icons/fa";
 import avatar from "../assets/img-perfil-3.png"
 import './HeaderInicial.css'
+import styled from 'styled-components';
 
-
+const DivBusca = styled.div`
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    gap: 1rem;
+`
+const Input = styled.input`
+    border: none;
+    background-color: rgba(255,255,255, 0.6);
+    width: 15rem;
+`
 const HeaderInicial = () => {
     return (
         <div className='Header' id='Header'>
@@ -20,7 +31,10 @@ const HeaderInicial = () => {
                 <a href="#">Navegar por idiomas</a>
             </div>
             <div id='div-busca'>
-                <FaSistrix className='icon-lupa' />
+                <DivBusca>
+                    <FaSistrix className='icon-lupa' />
+                    <Input type="text" />
+                </DivBusca>
                 <a href="#">Infantil</a>
                 <FaRegBell className='icon-sino' />
                 <img src={avatar} id='avatar' />
@@ -31,10 +45,8 @@ const HeaderInicial = () => {
 
 var nav = document.getElementById('Header');
 window.addEventListener("scroll", function (event) {
-    if (window.scrollY > 100) {
-
+    if (window.scrollY > 10) {
         nav.style.background = rgb(20, 20, 20);
-
     }
     else {
         nav.style.background = "transparent";

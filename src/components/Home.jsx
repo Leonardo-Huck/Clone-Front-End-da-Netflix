@@ -1,3 +1,4 @@
+import ReactSimplyCarousel from 'react-simply-carousel';
 import "./Home.css"
 import styled from "styled-components"
 import destaque from "../assets/fundo-pagina-inicial.jpg"
@@ -5,7 +6,12 @@ import beyblade from "../assets/beyblade.png"
 import { FaPlay } from "react-icons/fa";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 
+import { useState, useEffect } from "react";
+import MovieCard from "./MovieCard";
+import Carrossel from './Carrossel';
 
+const moviesURL = import.meta.env.VITE_API;
+const apiKey = import.meta.env.VITE_API_KEY;
 
 const Container = styled.div`
     width: 100%;
@@ -16,7 +22,7 @@ const Destaque = styled.div`
     max-width: 100%;
     position: static;
     padding-top: 10rem;
-    padding-bottom: 25rem;
+    padding-bottom: 10rem;
     width: auto;
     background-repeat: no-repeat;
     background: linear-gradient(90deg, rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0) 70%), url(${destaque}) no-repeat;
@@ -65,8 +71,49 @@ const ButtonMaisInformacoes = styled.button`
     justify-content: center;
     width: 60%;
 `
+const H3 = styled.h3`
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-left: 6rem;
+`
 
 const Home = () => {
+    const [topMovies, setTopMovies] = useState([]);
+    const [nowMovies, setNowMovies] = useState([]);
+    const [popularMovies, setPopularMovies] = useState([]);
+    const [upcomingMovies, setUpcomingMovies] = useState([]);
+
+    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+
+    const getMovies = async (topurl, nowurl, popurl, upurl) => {
+        const topres = await fetch(topurl);
+        const topdata = await topres.json();
+        setTopMovies(topdata.results)
+
+        const nowres = await fetch(nowurl);
+        const nowdata = await nowres.json();
+        setNowMovies(nowdata.results)
+
+        const popres = await fetch(popurl);
+        const popdata = await popres.json();
+        setPopularMovies(popdata.results)
+
+        const upres = await fetch(upurl);
+        const updata = await upres.json();
+        setUpcomingMovies(updata.results)
+
+    }
+
+    useEffect(() => {
+        const topRatedurl = `${moviesURL}top_rated?${apiKey}&language=pt-BR`
+        const nowPlayingurl = `${moviesURL}now_playing?${apiKey}&language=pt-BR`
+        const popularurl = `${moviesURL}popular?${apiKey}&language=pt-BR`
+        const upComingurl = `${moviesURL}upcoming?${apiKey}&language=pt-BR`
+
+        getMovies(topRatedurl, nowPlayingurl, popularurl, upComingurl);
+    }, [])
+
     return (
         <Container id="home">
             <Destaque id="destaque">
@@ -77,8 +124,17 @@ const Home = () => {
                     <ButtonMaisInformacoes><IoIosInformationCircleOutline className='info' /><strong>Mais Informações</strong></ButtonMaisInformacoes>
                 </DivDestaque>
             </Destaque>
-        </Container>
+            <H3>Melhores Avaliados</H3>
+            <Carrossel movies={topMovies} />
+            <H3>Em Cartaz</H3>
+            <Carrossel movies={nowMovies} />
+            <H3>Mais populares</H3>
+            <Carrossel movies={popularMovies} />
+            <H3>Proximos Lançamentos</H3>
+            <Carrossel movies={upcomingMovies} />
+        </Container >
     )
 }
+
 
 export default Home
