@@ -8,6 +8,7 @@ const Img = styled.img`
     max-width: 10rem;
     width: 10rem;
     height: 14rem;
+    border-radius: 2px;
 `
 const H2 = styled.h2`
     color: white;
@@ -24,10 +25,10 @@ const P = styled.p`
 const MovieCard = ({ movie }) => {
     return <Div>
         <Img src={imageUrl + movie.poster_path} alt={movie.title} />
-        <H2>{movie.title}</H2>
+        {/* <H2>{movie.title}</H2>
         <P>
             <FaStar /> {movie.vote_average}
-        </P>
+        </P> */}
     </Div>
 }
 

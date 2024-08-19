@@ -1,6 +1,14 @@
 import './LoginForm.css'
+import fundo from '../assets/imagem-fundo-netflix.jpg'
+import { useEffect } from 'react'
+
 
 const LoginForm = () => {
+
+    useEffect(() => {
+        document.body.style.background = `linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)), url(${fundo})`;
+    }, []);
+
     return (
         <div className='formContainer'>
             <form>
@@ -21,5 +29,10 @@ const LoginForm = () => {
         </div>
     )
 }
+
+// const body = document.getElementById('body');
+// document.addEventListener("DOMContentLoaded", () => {
+//     
+// })
 
 export default LoginForm

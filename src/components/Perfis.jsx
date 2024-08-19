@@ -5,9 +5,14 @@ import Imgperfil4 from '../assets/img-perfil-4.png'
 import Imgperfil5 from '../assets/img-perfil-5.png'
 import './Perfis.css'
 
-document.body.style = 'background: #141414;';
+import { useEffect } from 'react'
+
+// document.body.style = 'background: #141414;';
 
 const Perfis = () => {
+    useEffect(() => {
+        document.body.style.background = `#141414`;
+    }, []);
     return (
         <div id='perfis'>
             <h1>Quem está assistindo?</h1>
@@ -37,5 +42,6 @@ const Perfis = () => {
         </div>
     )
 }
+
 
 export default Perfis

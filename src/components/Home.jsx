@@ -83,10 +83,15 @@ const Home = () => {
     const [nowMovies, setNowMovies] = useState([]);
     const [popularMovies, setPopularMovies] = useState([]);
     const [upcomingMovies, setUpcomingMovies] = useState([]);
+    const [actionMovies, setActionMovies] = useState([]);
 
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
-    const getMovies = async (topurl, nowurl, popurl, upurl) => {
+    useEffect(() => {
+        document.body.style.background = `#141414`;
+    }, []);
+
+    const getMovies = async (topurl, nowurl, popurl, upurl, actionurl) => {
         const topres = await fetch(topurl);
         const topdata = await topres.json();
         setTopMovies(topdata.results)
@@ -103,6 +108,9 @@ const Home = () => {
         const updata = await upres.json();
         setUpcomingMovies(updata.results)
 
+        const actionres = await fetch(actionurl);
+        const actiondata = await actionres.json();
+        setActionMovies(actiondata.results)
     }
 
     useEffect(() => {
@@ -110,8 +118,9 @@ const Home = () => {
         const nowPlayingurl = `${moviesURL}now_playing?${apiKey}&language=pt-BR`
         const popularurl = `${moviesURL}popular?${apiKey}&language=pt-BR`
         const upComingurl = `${moviesURL}upcoming?${apiKey}&language=pt-BR`
+        const actionurl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_genres=28&${apiKey}`
 
-        getMovies(topRatedurl, nowPlayingurl, popularurl, upComingurl);
+        getMovies(topRatedurl, nowPlayingurl, popularurl, upComingurl, actionurl);
     }, [])
 
     return (
@@ -132,9 +141,31 @@ const Home = () => {
             <Carrossel movies={popularMovies} />
             <H3>Proximos Lançamentos</H3>
             <Carrossel movies={upcomingMovies} />
+            <H3>Filmes de Ação</H3>
+            <Carrossel movies={actionMovies} />
         </Container >
     )
 }
 
+// MOVIE
+// Action          28
+// Adventure       12
+// Animation       16
+// Comedy          35
+// Crime           80
+// Documentary     99
+// Drama           18
+// Family          10751
+// Fantasy         14
+// History         36
+// Horror          27
+// Music           10402
+// Mystery         9648
+// Romance         10749
+// Science Fiction 878
+// TV Movie        10770
+// Thriller        53
+// War             10752
+// Western         37
 
 export default Home

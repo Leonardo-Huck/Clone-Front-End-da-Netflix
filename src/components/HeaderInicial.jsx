@@ -4,6 +4,7 @@ import { FaRegBell } from "react-icons/fa";
 import avatar from "../assets/img-perfil-3.png"
 import './HeaderInicial.css'
 import styled from 'styled-components';
+import { useEffect } from 'react';
 
 const DivBusca = styled.div`
     display: flex;
@@ -15,8 +16,22 @@ const Input = styled.input`
     border: none;
     background-color: rgba(255,255,255, 0.6);
     width: 15rem;
+    border-radius: 5px;
 `
 const HeaderInicial = () => {
+
+    useEffect(() => {
+        var nav = document.getElementById('Header');
+        window.addEventListener("scroll", function (event) {
+            if (window.scrollY > 10) {
+                nav.style.background = "rgb(20, 20, 20)";
+            }
+            else {
+                nav.style.background = "transparent";
+            }
+        });
+    }, []);
+
     return (
         <div className='Header' id='Header'>
             <div className='Header'>
@@ -42,15 +57,5 @@ const HeaderInicial = () => {
         </div>
     )
 }
-
-var nav = document.getElementById('Header');
-window.addEventListener("scroll", function (event) {
-    if (window.scrollY > 10) {
-        nav.style.background = rgb(20, 20, 20);
-    }
-    else {
-        nav.style.background = "transparent";
-    }
-});
 
 export default HeaderInicial
