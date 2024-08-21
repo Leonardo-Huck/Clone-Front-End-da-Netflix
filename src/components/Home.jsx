@@ -1,14 +1,16 @@
+import { useState, useEffect } from "react";
+import styled from "styled-components"
 import ReactSimplyCarousel from 'react-simply-carousel';
 import "./Home.css"
-import styled from "styled-components"
-import destaque from "../assets/fundo-pagina-inicial.jpg"
-import beyblade from "../assets/beyblade.png"
+
 import { FaPlay } from "react-icons/fa";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 
-import { useState, useEffect } from "react";
+import beyblade from "../assets/beyblade.png"
+import destaque from "../assets/fundo-pagina-inicial.jpg"
 import MovieCard from "./MovieCard";
 import Carrossel from './Carrossel';
+
 
 const moviesURL = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -84,14 +86,13 @@ const Home = () => {
     const [popularMovies, setPopularMovies] = useState([]);
     const [upcomingMovies, setUpcomingMovies] = useState([]);
     const [actionMovies, setActionMovies] = useState([]);
+    const [adventureMovies, setAdventuryMovies] = useState([]);
+    const [comedyMovies, setComedyMovies] = useState([]);
+    const [animationMovies, setAnimationMovies] = useState([]);
 
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
-    useEffect(() => {
-        document.body.style.background = `#141414`;
-    }, []);
-
-    const getMovies = async (topurl, nowurl, popurl, upurl, actionurl) => {
+    const getMovies = async (topurl, nowurl, popurl, upurl, actionurl, adventureurl, comedyurl, animationurl) => {
         const topres = await fetch(topurl);
         const topdata = await topres.json();
         setTopMovies(topdata.results)
@@ -111,16 +112,33 @@ const Home = () => {
         const actionres = await fetch(actionurl);
         const actiondata = await actionres.json();
         setActionMovies(actiondata.results)
+
+        const adventureres = await fetch(adventureurl);
+        const adventuredata = await adventureres.json();
+        setAdventuryMovies(adventuredata.results)
+
+        const comedyres = await fetch(comedyurl);
+        const comedydata = await comedyres.json();
+        setComedyMovies(comedydata.results)
+
+        const animationres = await fetch(animationurl);
+        const animationdata = await animationres.json();
+        setAnimationMovies(animationdata.results)
     }
 
     useEffect(() => {
+        document.body.style.background = `#141414`;
+
         const topRatedurl = `${moviesURL}top_rated?${apiKey}&language=pt-BR`
         const nowPlayingurl = `${moviesURL}now_playing?${apiKey}&language=pt-BR`
         const popularurl = `${moviesURL}popular?${apiKey}&language=pt-BR`
         const upComingurl = `${moviesURL}upcoming?${apiKey}&language=pt-BR`
         const actionurl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_genres=28&${apiKey}`
+        const adventureurl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_genres=12&${apiKey}`
+        const comedyurl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_genres=35&${apiKey}`
+        const animationurl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&with_genres=16&${apiKey}`
 
-        getMovies(topRatedurl, nowPlayingurl, popularurl, upComingurl, actionurl);
+        getMovies(topRatedurl, nowPlayingurl, popularurl, upComingurl, actionurl, adventureurl, comedyurl, animationurl);
     }, [])
 
     return (
@@ -143,6 +161,12 @@ const Home = () => {
             <Carrossel movies={upcomingMovies} />
             <H3>Filmes de Ação</H3>
             <Carrossel movies={actionMovies} />
+            <H3>Filmes de Aventura</H3>
+            <Carrossel movies={adventureMovies} />
+            <H3>Filmes de Comedia</H3>
+            <Carrossel movies={comedyMovies} />
+            <H3>Filmes de Animação</H3>
+            <Carrossel movies={animationMovies} />
         </Container >
     )
 }

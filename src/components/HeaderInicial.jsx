@@ -4,7 +4,9 @@ import { FaRegBell } from "react-icons/fa";
 import avatar from "../assets/img-perfil-3.png"
 import './HeaderInicial.css'
 import styled from 'styled-components';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import UserContext from '../context/UserContext'
+
 
 const DivBusca = styled.div`
     display: flex;
@@ -19,6 +21,7 @@ const Input = styled.input`
     border-radius: 5px;
 `
 const HeaderInicial = () => {
+    const { imgPerfil } = useContext(UserContext)
 
     useEffect(() => {
         var nav = document.getElementById('Header');
@@ -52,7 +55,7 @@ const HeaderInicial = () => {
                 </DivBusca>
                 <a href="#">Infantil</a>
                 <FaRegBell className='icon-sino' />
-                <img src={avatar} id='avatar' />
+                <img src={imgPerfil} id='avatar' />
             </div>
         </div>
     )
