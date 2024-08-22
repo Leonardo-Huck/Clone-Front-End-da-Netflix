@@ -21,22 +21,6 @@ h1 {
     color: white;
 }
 
-.inputForm {
-    box-sizing: border-box;
-    width: 100%;
-    margin: 0 auto;
-    line-height: 1.5;
-    padding: 1rem 0;
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: white;
-    background: rgba(22, 22, 22, 0.7);
-    border-radius: 0.25rem;
-    border: 1px solid rgba(128, 128, 128, 0.7);
-    margin-bottom: 1rem;
-    padding-left: 1rem;
-}
-
 input::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
@@ -109,4 +93,42 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.inputForm {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+    line-height: 1.5;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: white;
+    background: rgba(22, 22, 22, 0.7);
+    border-radius: 0.25rem;
+    border: 1px solid rgba(128, 128, 128, 0.7);
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+.inputForm.erro {
+    margin-bottom: 0;
+    border: 1px solid rgb(235, 57, 66);
+}
+
+.erro-senha,
+.erro-email {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    margin-top: 0.375rem;
+    color: rgb(235, 57, 66);
+}
+
+.erro-x {
+    width: 1.5rem;
+    height: 1.5rem;
 }
