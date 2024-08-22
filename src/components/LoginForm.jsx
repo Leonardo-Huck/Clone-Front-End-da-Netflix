@@ -7,13 +7,56 @@ import { Navigate } from 'react-router-dom'
 
 
 const LoginForm = () => {
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
 
-    const { isLogged, setIsLogged } = useContext(UserContext)
+    const [errors, setErrors] = useState({});
+
+    const { setIsLogged } = useContext(UserContext)
     const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
         document.body.style.background = `linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)), url(${fundo})`;
     }, []);
+
+
+    const validate = () => {
+
+        const newErrors = {};
+
+        if (!formData.email) {
+
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            newErrors.email = 'Informe um email válido.';
+        }
+
+        if (!formData.password) {
+
+        } else if (formData.password.length < 4) {
+            newErrors.password = "A senha deve ter entre 4 e 60 caracteres.";
+        }
+        return newErrors;
+    };
+
+    const handleChange = (event) => {
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value
+        })
+    };
+
+    useEffect(() => {
+        const validationErrors = validate();
+
+        if (Object.keys(validationErrors).length === 0) {
+            setErrors({});
+        } else {
+            setErrors(validationErrors);
+        }
+    }, [handleChange])
+
 
     const handleLogin = () => {
         setIsLogged(true);
@@ -28,8 +71,10 @@ const LoginForm = () => {
         <div className='formContainer'>
             <form>
                 <h1>Entrar</h1>
-                <input type="text" placeholder="Email ou número de celular" className='inputForm' id='email' />
-                <input type="password" placeholder="Senha" className='inputForm' />
+                <input type="text" placeholder="Email ou número de celular" className='inputForm' id='email' name='email' onChange={handleChange} />
+                {errors.email && <p>{errors.email}</p>}
+                <input type="password" placeholder="Senha" className='inputForm' onChange={handleChange} name="password" />
+                {errors.password && <p>{errors.password}</p>}
                 <button type='button' id='entrar' onClick={handleLogin}>Entrar</button>
                 <label id='ou'>OU</label>
                 <button type='button' id='codigo'>Usar um código de acesso</button>
@@ -45,9 +90,5 @@ const LoginForm = () => {
     )
 }
 
-// const body = document.getElementById('body');
-// document.addEventListener("DOMContentLoaded", () => {
-//     
-// })
 
 export default LoginForm

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components"
-import ReactSimplyCarousel from 'react-simply-carousel';
 import "./Home.css"
 
 import { FaPlay } from "react-icons/fa";
@@ -90,7 +89,6 @@ const Home = () => {
     const [comedyMovies, setComedyMovies] = useState([]);
     const [animationMovies, setAnimationMovies] = useState([]);
 
-    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
     const getMovies = async (topurl, nowurl, popurl, upurl, actionurl, adventureurl, comedyurl, animationurl) => {
         const topres = await fetch(topurl);
@@ -151,6 +149,8 @@ const Home = () => {
                     <ButtonMaisInformacoes><IoIosInformationCircleOutline className='info' /><strong>Mais Informações</strong></ButtonMaisInformacoes>
                 </DivDestaque>
             </Destaque>
+            <H3>Filmes de Animação</H3>
+            <Carrossel movies={animationMovies} />
             <H3>Melhores Avaliados</H3>
             <Carrossel movies={topMovies} />
             <H3>Em Cartaz</H3>
@@ -165,8 +165,6 @@ const Home = () => {
             <Carrossel movies={adventureMovies} />
             <H3>Filmes de Comedia</H3>
             <Carrossel movies={comedyMovies} />
-            <H3>Filmes de Animação</H3>
-            <Carrossel movies={animationMovies} />
         </Container >
     )
 }

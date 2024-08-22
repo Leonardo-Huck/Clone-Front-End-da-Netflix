@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Footer from "./components/Footer"
@@ -11,17 +11,15 @@ import Movie from './components/Movie.jsx'
 import Search from './components/Search.jsx'
 import ProtectedRoute from './components/ProtectRoutes'
 import UserContext from './context/UserContext.jsx'
-import img from '../src/assets/img-perfil-1.png'
 
 
 function App() {
 
   const [isLogged, setIsLogged] = useState(false)
-  const [imgperfil, setImgPerfil] = useState(0)
 
   return (
     <>
-      <UserContext.Provider value={{ isLogged, setIsLogged, setImgPerfil, imgperfil }}>
+      <UserContext.Provider value={{ isLogged, setIsLogged }}>
         <BrowserRouter>
           <Routes>
             <Route>

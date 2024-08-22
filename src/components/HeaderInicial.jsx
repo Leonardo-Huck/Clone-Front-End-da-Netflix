@@ -1,11 +1,15 @@
+import Imgperfil1 from '../assets/img-perfil-1.png';
+import Imgperfil2 from '../assets/img-perfil-2.png';
+import Imgperfil3 from '../assets/img-perfil-3.png';
+import Imgperfil4 from '../assets/img-perfil-4.png';
+import Imgperfil5 from '../assets/img-perfil-5.png';
 import logo from '../assets/Netflix-Logo-500x281.png'
 import { FaSistrix } from "react-icons/fa";
 import { FaRegBell } from "react-icons/fa";
-import avatar from "../assets/img-perfil-3.png"
+
 import './HeaderInicial.css'
 import styled from 'styled-components';
-import { useEffect, useContext } from 'react';
-import UserContext from '../context/UserContext'
+import { useEffect } from 'react';
 
 
 const DivBusca = styled.div`
@@ -21,7 +25,18 @@ const Input = styled.input`
     border-radius: 5px;
 `
 const HeaderInicial = () => {
-    const { imgPerfil } = useContext(UserContext)
+    let imgPerfil = Imgperfil1;
+    const dataPerfil = localStorage.getItem('perfil')
+
+    if (dataPerfil == 2) {
+        imgPerfil = Imgperfil2
+    } else if (dataPerfil == 3) {
+        imgPerfil = Imgperfil3
+    } else if (dataPerfil == 4) {
+        imgPerfil = Imgperfil4
+    } else if (dataPerfil == 5) {
+        imgPerfil = Imgperfil5
+    }
 
     useEffect(() => {
         var nav = document.getElementById('Header');
