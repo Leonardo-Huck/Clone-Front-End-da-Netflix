@@ -52,6 +52,7 @@ function App() {
                 path='/search'
                 element={
                   <ProtectedRoute isLoggedIn={isLogged}>
+                    <HeaderInicial />
                     <Search />
                   </ProtectedRoute>
                 }

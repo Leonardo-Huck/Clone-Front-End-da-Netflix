@@ -9,10 +9,11 @@ import { FaRegBell } from "react-icons/fa";
 
 import './HeaderInicial.css'
 import styled from 'styled-components';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
-const DivBusca = styled.div`
+const DivBusca = styled.form`
     display: flex;
     box-sizing: border-box;
     flex-direction: row;
@@ -24,7 +25,28 @@ const Input = styled.input`
     width: 15rem;
     border-radius: 5px;
 `
+const Button = styled.button`
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0 auto;
+    width: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+`
+
 const HeaderInicial = () => {
+    const [search, setSearch] = useState('');
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!search) return;
+
+        navigate(`/search?q=${search}`);
+        setSearch('');
+    }
+
     let imgPerfil = Imgperfil1;
     const dataPerfil = localStorage.getItem('perfil')
 
@@ -64,9 +86,12 @@ const HeaderInicial = () => {
                 <a href="#">Navegar por idiomas</a>
             </div>
             <div id='div-busca'>
-                <DivBusca>
-                    <FaSistrix className='icon-lupa' />
-                    <Input type="text" />
+                <DivBusca onSubmit={handleSubmit}>
+                    <Button type='submit'><FaSistrix className='icon-lupa' /></Button>
+                    <Input
+                        type="text"
+                        onChange={(e) => setSearch(e.target.value)}
+                        value={search} />
                 </DivBusca>
                 <a href="#">Infantil</a>
                 <FaRegBell className='icon-sino' />
