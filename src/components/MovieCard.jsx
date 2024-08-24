@@ -21,13 +21,10 @@ const H2 = styled.h2`
 const Div = styled.div`
     margin: 0 0.2rem 0 0.2rem;
 `
-const P = styled.p`
-    color: #a3a315;
-`
 
 const MovieCard = ({ movie }) => {
     return <Div>
-        <Img src={imageUrl + movie.poster_path} alt={movie.title} />
+        <Link to={`/movie/${movie.id}`}><Img src={imageUrl + movie.poster_path} alt={movie.title} /></Link>
     </Div>
 }
 
