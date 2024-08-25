@@ -56,3 +56,15 @@ div>.a {
     width: auto;
     height: 1.2rem;
 }
+
+@media only screen and (max-width: 800px) {
+    footer {
+        padding: 3rem auto;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #linkRodape {
+        flex-wrap: wrap;
+    }
+}

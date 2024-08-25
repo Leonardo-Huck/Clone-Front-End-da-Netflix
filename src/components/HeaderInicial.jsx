@@ -16,13 +16,21 @@ const DivBusca = styled.form`
     display: flex;
     box-sizing: border-box;
     flex-direction: row;
-    gap: 1rem;
+    gap: 1rem;  
+    
+    @media only screen and (max-width: 950px) {
+        gap: 0.3rem;    
+}
 `
 const Input = styled.input`
     border: none;
     background-color: rgba(255,255,255, 0.6);
     width: 15rem;
     border-radius: 5px;
+    @media only screen and (max-width: 950px) {
+        width: 10rem;
+    
+}
 `
 const Button = styled.button`
     background: transparent;
@@ -31,6 +39,25 @@ const Button = styled.button`
     margin: 0 auto;
     width: 2rem;
     color: rgba(255, 255, 255, 0.8);
+`
+const Div = styled.div`
+    display: none;
+    flex-direction: row;
+    gap: 1rem;
+
+    @media only screen and (max-width: 950px) {
+        display: flex;
+    }
+`
+const Select = styled.select`
+    background-color: transparent;
+    color: rgba(255,255,255,0.8);
+    border: none;
+`
+const Option = styled.option`
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    background-color: rgb(20,20,20);
 `
 
 const HeaderInicial = () => {
@@ -76,8 +103,18 @@ const HeaderInicial = () => {
             <div className='Header'>
                 <Link to={'/'}><img src={logo} id='logo' /></Link>
             </div>
+            <Div>
+                {/* <label htmlFor="nav">Navegar</label> */}
+                <Select name="nav" onChange={(e) => { navigate(e.target.value) }}>
+                    <Option>Navegar</Option>
+                    <Option value="/">Início</Option>
+                    <Option value="/">Séries</Option>
+                    <Option value="/">Filmes</Option>
+                    <Option value="/">Bombando</Option>
+                </Select>
+            </Div>
             <div id='nav'>
-                <Link to={'/'}><a href="#">Início</a></Link>
+                <Link to={'/'}>Início</Link>
                 <a href="#">Séries</a>
                 <a href="#">Filmes</a>
                 <a href="#">Bombando</a>
@@ -92,7 +129,7 @@ const HeaderInicial = () => {
                         onChange={(e) => setSearch(e.target.value)}
                         value={search} />
                 </DivBusca>
-                <a href="#">Infantil</a>
+                <a href="#" className='infantil'>Infantil</a>
                 <FaRegBell className='icon-sino' />
                 <img src={imgPerfil} id='avatar' />
             </div>
