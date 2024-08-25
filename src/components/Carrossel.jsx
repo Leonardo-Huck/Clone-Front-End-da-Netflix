@@ -25,7 +25,7 @@ const Carrossel = ({ movies }) => {
                 { minWidth: 1200, maxWidth: 1400, itemsToShow: 6 },
                 { minWidth: 900, maxWidth: 1200, itemsToShow: 4 },
                 { minWidth: 700, maxWidth: 900, itemsToShow: 3 },
-                { maxWidth: 700, itemsToShow: 2 }
+                { maxWidth: 700, itemsToShow: 1 }
             ]}
             speed={400}
             easing="linear"

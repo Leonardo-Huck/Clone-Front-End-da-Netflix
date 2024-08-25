@@ -1,5 +1,4 @@
 .navigate {
-    align-self: center;
     background: transparent;
     border: none;
     border-radius: 2%;
@@ -20,4 +19,8 @@
 
 .carrossel:hover .navigate {
     opacity: 1;
+}
+
+@media only screen and (max-width: 800px) {
+    .navigate {}
 }

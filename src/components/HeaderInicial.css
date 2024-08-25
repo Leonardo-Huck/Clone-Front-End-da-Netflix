@@ -114,4 +114,8 @@
     #nav {
         font-size: 0.8rem;
     }
+
+    .Header {
+        gap: 0.5rem;
+    }
 }

@@ -28,7 +28,7 @@ const Input = styled.input`
     width: 15rem;
     border-radius: 5px;
     @media only screen and (max-width: 950px) {
-        width: 10rem;
+        width: 5rem;
     
 }
 `

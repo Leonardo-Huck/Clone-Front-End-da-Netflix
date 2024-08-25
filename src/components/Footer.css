@@ -59,12 +59,17 @@ div>.a {
 
 @media only screen and (max-width: 800px) {
     footer {
-        padding: 3rem auto;
+        padding: 3rem 5rem;
         justify-content: center;
         text-align: center;
     }
 
     #linkRodape {
         flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #select {
+        align-self: center;
     }
 }

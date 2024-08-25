@@ -122,6 +122,10 @@ const H3 = styled.h3`
     font-size: 1.4rem;
     font-weight: 600;
     margin-left: 6rem;
+    @media only screen and (max-width: 700px) {
+        text-align: center;
+        margin-left: 0;
+    }
 `
 
 const Home = () => {

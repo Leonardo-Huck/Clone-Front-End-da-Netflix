@@ -14,17 +14,29 @@ const Div = styled.footer`
     flex-direction: column;
     background-color: #141414;
     color: white;
+    @media only screen and (max-width: 800px) {
+       padding: 3rem 5rem;
+    }
 `
 const DivIcones = styled.div`
     display: flex;
     flex-direction: row;
     gap: 2rem;
+
+    @media only screen and (max-width: 800px) {
+       align-self: center;
+       padding-bottom: 1rem;
+    }
 `
 const DivLinkRodape = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 2rem;
+
+    @media only screen and (max-width: 800px) {
+       align-self: center;
+    }
 `
 const DivLinks = styled.div`
     display: flex;
