@@ -10,8 +10,7 @@ import { FaRegBell } from "react-icons/fa";
 import './HeaderInicial.css'
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate, Link } from 'react-router-dom';
 
 const DivBusca = styled.form`
     display: flex;
@@ -75,10 +74,10 @@ const HeaderInicial = () => {
     return (
         <div className='Header' id='Header'>
             <div className='Header'>
-                <img src={logo} id='logo' />
+                <Link to={'/'}><img src={logo} id='logo' /></Link>
             </div>
             <div id='nav'>
-                <a href="#">Início</a>
+                <Link to={'/'}><a href="#">Início</a></Link>
                 <a href="#">Séries</a>
                 <a href="#">Filmes</a>
                 <a href="#">Bombando</a>

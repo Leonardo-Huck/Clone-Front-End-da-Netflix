@@ -9,33 +9,34 @@ import {
     BsStarFill
 } from 'react-icons/bs'
 
-import MovieCard from "./MovieCard"
-import { ImInfo } from "react-icons/im";
-
 const moviesURL = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
 const imageUrl = import.meta.env.VITE_IMG
 
 const Container = styled.div`
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 80%;
+    padding: 4rem 0;
     
 `
 const MovieContainer = styled.div`
-
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
 `
 const H2 = styled.h2`
-
+    width: 100%;
+    color: white;
 `
 const H3 = styled.h3`
-
-`
-const Div = styled.div`
-
-`
-const Info = styled.div`
-
+    color: white;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
 `
 const P = styled.p`
-
+    font-size: 1.2rem;
 `
 const Img = styled.img`
 `
@@ -58,34 +59,36 @@ const Movie = () => {
     return (
         <Container>
             {movie &&
-                <MovieContainer>
+                <>
                     <H2>{movie.title}</H2>
-                    <Div>
-                        <Img src={imageUrl + movie.poster_path} alt={movie.title} />
-                    </Div>
-                    <Div>
-                        <Info>
-                            <H3><BsStarFill />Avaliação:</H3>
-                            <P>{movie.vote_average}</P>
-                        </Info>
-                        <Info>
-                            <H3><BsWallet2 />Orçamento:</H3>
-                            <P>{(movie.budget).toLocaleString("en-US", { style: "currency", currency: "USD" })}</P>
-                        </Info>
-                        <Info>
-                            <H3><BsGraphUp />Receita:</H3>
-                            <P>{(movie.revenue).toLocaleString("en-US", { style: "currency", currency: "USD" })}</P>
-                        </Info>
-                        <Info>
-                            <H3><BsHourglassSplit />Duração:</H3>
-                            <P>{movie.runtime} minutos</P>
-                        </Info>
-                        <Info>
-                            <H3><BsFillFileEarmarkTextFill />Descrição:</H3>
-                            <P>{movie.overview}</P>
-                        </Info>
-                    </Div>
-                </MovieContainer>}
+                    <MovieContainer>
+                        <div>
+                            <Img src={imageUrl + movie.poster_path} alt={movie.title} />
+                        </div>
+                        <div>
+                            <div>
+                                <H3><BsStarFill />Avaliação:</H3>
+                                <P>{movie.vote_average}</P>
+                            </div>
+                            <div>
+                                <H3><BsWallet2 />Orçamento:</H3>
+                                <P>{(movie.budget).toLocaleString("en-US", { style: "currency", currency: "USD" })}</P>
+                            </div>
+                            <div>
+                                <H3><BsGraphUp />Receita:</H3>
+                                <P>{(movie.revenue).toLocaleString("en-US", { style: "currency", currency: "USD" })}</P>
+                            </div>
+                            <div>
+                                <H3><BsHourglassSplit />Duração:</H3>
+                                <P>{movie.runtime} minutos</P>
+                            </div>
+                            <div>
+                                <H3><BsFillFileEarmarkTextFill />Descrição:</H3>
+                                <P>{movie.overview}</P>
+                            </div>
+                        </div>
+                    </MovieContainer>
+                </>}
         </Container>
     )
 }

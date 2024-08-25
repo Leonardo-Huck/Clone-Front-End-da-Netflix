@@ -44,6 +44,7 @@ function App() {
                 path='/movie/:id'
                 element={
                   <ProtectedRoute isLoggedIn={isLogged}>
+                    <HeaderInicial />
                     <Movie />
                   </ProtectedRoute>
                 }
