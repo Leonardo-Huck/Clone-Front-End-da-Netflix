@@ -52,4 +52,4 @@ ou clique no link que apareceu no terminal
 
 Basta acessar o link
 
-https://netflixclone-feh7g5rhf-leonardo-monteiro-hucks-projects.vercel.app
+https://netflixclone-brgvdwl2x-leonardo-monteiro-hucks-projects.vercel.app/
