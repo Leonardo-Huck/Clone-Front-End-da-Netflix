@@ -23,22 +23,39 @@ const Container = styled.div`
 const MovieContainer = styled.div`
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    gap: 3rem;
+    
+    @media only screen and (max-width: 950px) {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+    
 `
 const H2 = styled.h2`
     width: 100%;
     color: white;
+    @media only screen and (max-width: 950px) {
+        text-align: center;
+    }
 `
 const H3 = styled.h3`
     color: white;
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    @media only screen and (max-width: 950px) {
+        justify-content: center;
+    }
 `
 const P = styled.p`
     font-size: 1.2rem;
 `
 const Img = styled.img`
+    @media only screen and (max-width: 700px) {
+       width: 25rem;
+       height: auto;
+    }
 `
 
 const Movie = () => {

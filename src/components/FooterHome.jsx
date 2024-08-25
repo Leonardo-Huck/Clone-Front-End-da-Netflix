@@ -41,6 +41,10 @@ const Button = styled.button`
     background: transparent;
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.9rem;
+
+    @media only screen and (max-width: 800px) {
+       align-self: center;
+    }
 `
 const Span = styled.span`
     font-size: 0.7rem;
@@ -51,6 +55,7 @@ const A = styled.a`
     color: rgba(255, 255, 255, 0.5);
 `
 const DivBotao = styled.div`
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
 `
