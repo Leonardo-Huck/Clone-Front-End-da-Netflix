@@ -24,20 +24,49 @@ const Destaque = styled.div`
     position: static;
     padding-top: 10rem;
     padding-bottom: 10rem;
-    width: auto;
     background-repeat: no-repeat;
     background: linear-gradient(90deg, rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0) 70%), url(${destaque}) no-repeat;
     background-size: 100%;
     padding-left: 3rem;
+    background-size: cover;
+    @media only screen and (max-width: 1200px) {
+        padding-top: 5rem;
+        padding-left: 2rem; 
+        padding-bottom: 5rem;
+    }
+    @media only screen and (max-width: 950px) {
+        padding-top: 5rem;
+        padding-left: 2rem; 
+        padding-bottom: 5rem;
+    }
+    @media only screen and (max-width: 600px) {
+        padding-top: 3rem;
+        padding-left: 1rem; 
+        padding-bottom: 3rem;   
+    }
+
 `
 const ImgDestaque = styled.img`
-
+    width: 30rem;
+    height: auto;
+    @media only screen and (max-width: 950px) {
+        width: 18rem;    
+    }
+    @media only screen and (max-width: 700px) {
+        width: 10rem;    
+    }
 `
 const H2 = styled.h2`
     color: white;
     width: 50%;
     font-size: 1.2rem;
     font-weight: 600;
+    @media only screen and (max-width: 950px) {
+        font-size: 0.9rem;
+    }
+    @media only screen and (max-width: 700px) {
+        font-size: 0.8rem;    
+    }
 `
 const DivDestaque = styled.div`
     box-sizing: border-box;
@@ -58,6 +87,14 @@ const ButtonAssistir = styled.button`
     border: none;
     border-radius: 5px;
     width: 30%;
+    @media only screen and (max-width: 950px) {
+        font-size: 0.9rem;
+        width: 20rem;
+    }
+    @media only screen and (max-width: 700px) {
+        font-size: 0.7rem;    
+    }
+
 `
 const ButtonMaisInformacoes = styled.button`
     color: white;
@@ -71,6 +108,14 @@ const ButtonMaisInformacoes = styled.button`
     align-items: center;
     justify-content: center;
     width: 60%;
+    @media only screen and (max-width: 950px) {
+        font-size: 0.9rem;
+        width: 40rem;
+    }
+    @media only screen and (max-width: 700px) {
+        font-size: 0.7rem; 
+        width: 30rem;   
+    }
 `
 const H3 = styled.h3`
     color: white;
