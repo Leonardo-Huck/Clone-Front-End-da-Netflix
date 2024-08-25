@@ -194,8 +194,6 @@ const Home = () => {
                     <ButtonMaisInformacoes><IoIosInformationCircleOutline className='info' /><strong>Mais Informações</strong></ButtonMaisInformacoes>
                 </DivDestaque>
             </Destaque>
-            <H3>Filmes de Animação</H3>
-            <Carrossel movies={animationMovies} />
             <H3>Melhores Avaliados</H3>
             <Carrossel movies={topMovies} />
             <H3>Em Cartaz</H3>
@@ -210,6 +208,8 @@ const Home = () => {
             <Carrossel movies={adventureMovies} />
             <H3>Filmes de Comedia</H3>
             <Carrossel movies={comedyMovies} />
+            <H3>Filmes de Animação</H3>
+            <Carrossel movies={animationMovies} />
         </Container >
     )
 }
