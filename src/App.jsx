@@ -11,6 +11,7 @@ import Movie from './components/Movie.jsx'
 import Search from './components/Search.jsx'
 import ProtectedRoute from './components/ProtectRoutes'
 import UserContext from './context/UserContext.jsx'
+import FooterHome from './components/FooterHome.jsx'
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
                   <ProtectedRoute isLoggedIn={isLogged}>
                     <HeaderInicial />
                     <Home />
+                    <FooterHome />
                   </ProtectedRoute>
                 }
               />
@@ -46,6 +48,7 @@ function App() {
                   <ProtectedRoute isLoggedIn={isLogged}>
                     <HeaderInicial />
                     <Movie />
+                    <FooterHome />
                   </ProtectedRoute>
                 }
               />
@@ -55,6 +58,7 @@ function App() {
                   <ProtectedRoute isLoggedIn={isLogged}>
                     <HeaderInicial />
                     <Search />
+                    <FooterHome />
                   </ProtectedRoute>
                 }
               />
